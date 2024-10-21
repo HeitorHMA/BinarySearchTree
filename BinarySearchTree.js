@@ -1,8 +1,9 @@
-function Node(data){
+function Node(data , left , right){
 data : data;
-left : null;
-right : null;
-console.log (data - 1)
+left : left;
+right : right;
 }
-let Test = Node(35)
-console.log(Test)
+function Tree (arr){
+    const organizedArray = arr
+    root: buildTree(organizedArray);
+};
