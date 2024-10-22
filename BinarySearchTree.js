@@ -22,4 +22,4 @@ function Tree (arr){
     root:buildTree(organizedArray),
     }
 }
-Tree([,2,3,4,5,5,5,5,5,1,2,64,12,56,1223,20]);
+Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]);
