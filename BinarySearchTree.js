@@ -20,7 +20,7 @@ function Tree (arr){
     const organizedArray = [...new Set(arr.sort((a,b)=> a - b))];
     return{
     root : buildTree(organizedArray),
-    insert(root = this.root,value){
+    insert(value,root = this.root){
         if (root == null ){
             return new Node (value)
         }
