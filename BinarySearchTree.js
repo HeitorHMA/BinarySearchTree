@@ -27,20 +27,31 @@ function Tree (arr){
         if (root.data === value){
             return root
         };
-        if(value > this.root.data){
-            root = root.right
-            insert (value)
+        if(value > root.data){
+            root.right = this.insert(value,root.right)
         }
-        else if(value < this.root.data){
-            root = root.left
-            insert (value)
+        else if(value < root.data){
+            root.left = this.insert(value,root.left)
         };
         return root;
     },
-    delete(value){
+    delete(value, root = this.root){
         
     },
+    
     }
 }
-Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]);
-insert
+
+const prettyPrint = (node, prefix = "", isLeft = true) => {
+    if (node === null) {
+      return;
+    }
+    if (node.right !== null) {
+      prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+    }
+    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+    }
+  };
+  prettyPrint(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).insert(22))
