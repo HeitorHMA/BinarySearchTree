@@ -1,8 +1,8 @@
-function Node(data){
+function Node(data , right = null , left = null){
     return{
       data : data,
-      left : null,
-      right : null,
+      left : left,
+      right : right,
 }};
 function buildTree(arr , start = 0 , end = arr.length - 1 ){
     if (start > end) return null;
@@ -19,7 +19,26 @@ function buildTree(arr , start = 0 , end = arr.length - 1 ){
 function Tree (arr){
     const organizedArray = [...new Set(arr.sort((a,b)=> a - b))];
     return{
-    root:buildTree(organizedArray),
+    root : buildTree(organizedArray),
+    insert(value){
+        if (root == null ){
+            return new Node (value)
+        }
+        if (root.data === value){
+            return root
+        }
+        if(value > this.root.data){
+            root = root.right
+            insert (value)
+        }
+        if(value < this.root.data){
+            root = root.left
+            insert (value)
+        }
+    },
+    delete(value){
+        
+    },
     }
 }
 Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]);
