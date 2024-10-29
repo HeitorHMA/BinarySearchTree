@@ -23,18 +23,19 @@ function Tree (arr){
     insert(value,root = this.root){
         if (root == null ){
             return new Node (value)
-        }
+        };
         if (root.data === value){
             return root
-        }
+        };
         if(value > this.root.data){
             root = root.right
             insert (value)
         }
-        if(value < this.root.data){
+        else if(value < this.root.data){
             root = root.left
             insert (value)
-        }
+        };
+        return root;
     },
     delete(value){
         
@@ -42,3 +43,4 @@ function Tree (arr){
     }
 }
 Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]);
+insert
