@@ -36,7 +36,19 @@ function Tree (arr){
         return root;
     },
     delete(value, root = this.root){
-        
+            if (root == null ){
+                return null
+            };
+            if (root.data === value){
+                return null
+            };
+            if(value > root.data){
+                root.right = this.insert(value,root.right)
+            }
+            else if(value < root.data){
+                root.left = this.insert(value,root.left)
+            };
+            return root;
     },
     
     }
