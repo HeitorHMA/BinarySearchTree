@@ -1,8 +1,8 @@
 function Node(data){
     return{
-      this.data = data,
-      this.left = null,
-      this.right = null,
+      data : data,
+      left : null,
+      right : null,
 }};
 function buildTree(arr , start = 0 , end = arr.length - 1 ){
     if (start > end) return null;
