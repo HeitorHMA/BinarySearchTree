@@ -83,4 +83,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
       prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   };
-  prettyPrint(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).insert(22))
+  prettyPrint(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).delete(1))
+
+  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).delete(56)))
