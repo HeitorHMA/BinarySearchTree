@@ -35,19 +35,36 @@ function Tree (arr){
         };
         return root;
     },
+    getSuccessor(curr){
+        curr : curr.right
+        while (curr !== null && curr.left !== null){
+            curr = curr.left
+        }
+        return curr
+    },
     delete(value, root = this.root){
             if (root == null ){
-                return null
-            };
-            if (root.data === value){
-                return null
-            };
+                return root
+            }
             if(value > root.data){
-                root.right = this.insert(value,root.right)
+                root.right = this.delete(value,root.right)
             }
             else if(value < root.data){
-                root.left = this.insert(value,root.left)
-            };
+                root.left = this.delete(value,root.left)
+            }
+            else {
+                if (root.left == null){
+                    return root.right;
+                }
+                if ( root.right == null){
+                    return root.left;
+                }
+                else {
+                    let successor = this.getSuccessor(root)
+                    root.data = successor.data
+                    root.right = this.delete(root.right, successor.data)
+                }
+            }
             return root;
     },
     
