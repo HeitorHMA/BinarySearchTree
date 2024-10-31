@@ -77,7 +77,26 @@ function Tree (arr){
             return this.find(value,root.left)
         }
     },
-    
+    printLevelOrder(root = this.root){
+        if (root == null){
+            return null
+        };
+
+        const queue = [];
+
+        queue.push(root);
+        while ( queue.length > 0){
+            const node = queue.shift();
+            console.log(node.data);
+
+            if(node.left !== null){
+                queue.push(node.left)
+            }
+            if(node.right !== null){
+                queue.push(node.right)
+            };
+        };
+    },
 
     
     }
@@ -94,6 +113,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
       prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   };
-  prettyPrint(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).delete(1))
-
-  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).find(4)))
+  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).printLevelOrder()))
