@@ -15,7 +15,6 @@ function buildTree(arr , start = 0 , end = arr.length - 1 ){
      
     return root;
    };
-
 function Tree (arr){
     const organizedArray = [...new Set(arr.sort((a,b)=> a - b))];
     return{
@@ -67,10 +66,22 @@ function Tree (arr){
             }
             return root;
     },
+    find(value, root = this.root){
+        if(root === null || root.data === value){
+            return root
+        }
+        if (value > root.data){
+            return this.find(value,root.right)
+        }
+        if (value < root.data){
+            return this.find(value,root.left)
+        }
+    },
+    
+
     
     }
 }
-
 const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
       return;
@@ -85,4 +96,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   };
   prettyPrint(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).delete(1))
 
-  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).delete(56)))
+  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).find(4)))
