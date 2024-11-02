@@ -97,8 +97,22 @@ function Tree (arr){
             };
         };
     },
-
-    
+    inOrder(root = this.root){
+        if(root == null){
+            return null
+        }
+        root.left = this.inOrder(root.left)
+        console.log(root.data);
+        root.left = this.inOrder(root.right)
+    },
+    postOrder(root = this.root){
+        if(root == null){
+            return null
+        }
+        root.left = this.postOrder(root.left)
+        root.left = this.postOrder(root.right)
+        console.log(root.data);
+    },
     }
 }
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -113,4 +127,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
       prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   };
-  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).printLevelOrder()))
+  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).inOrder()))
