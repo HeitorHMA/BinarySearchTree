@@ -113,6 +113,14 @@ function Tree (arr){
         root.left = this.postOrder(root.right)
         console.log(root.data);
     },
+    preOrder(root = this.root){
+        if(root == null){
+            return null
+        }
+        console.log(root.data);
+        root.left = this.pretOrder(root.left)
+        root.left = this.pretOrder(root.right)
+    },
     }
 }
 const prettyPrint = (node, prefix = "", isLeft = true) => {
