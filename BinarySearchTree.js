@@ -118,21 +118,32 @@ function Tree (arr){
             return null
         }
         console.log(root.data);
-        root.left = this.pretOrder(root.left)
-        root.left = this.pretOrder(root.right)
+        root.left = this.preOrder(root.left)
+        root.left = this.preOrder(root.right)
+    },
+    height(node, root = this.root){
+        if(root == null){
+            return -1
+        }
+        let lH = this.height(node,root.left);
+        let rH = this.height(node,root.right);
+        let ans =  Math.max(lH , rH) + 1;
+        if( root === node){
+            return ans
+        };
+    },
+    prettyPrint (node = this.root, prefix = "", isLeft = true){
+        if (node === null) {
+          return;
+        }
+        if (node.right !== null) {
+          this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+        }
+        console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+        if (node.left !== null) {
+          this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+        }
     },
     }
 }
-const prettyPrint = (node, prefix = "", isLeft = true) => {
-    if (node === null) {
-      return;
-    }
-    if (node.right !== null) {
-      prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
-    }
-    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-    if (node.left !== null) {
-      prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
-    }
-  };
-  console.log((Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).inOrder()))
+  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).height(64))
