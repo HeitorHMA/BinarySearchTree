@@ -121,16 +121,17 @@ function Tree (arr){
         root.left = this.preOrder(root.left)
         root.left = this.preOrder(root.right)
     },
-    height(node, root = this.root){
-        if(root == null){
-            return -1
+    height(root = this.root) {
+        if (root === null) return 0;
+  
+        let lHeight = this.height(root.left);
+        let rHeight = this.height(root.right);
+  
+        if (lHeight > rHeight) {
+          return lHeight + 1;
+        } else {
+          return rHeight + 1;
         }
-        let lH = this.height(node,root.left);
-        let rH = this.height(node,root.right);
-        let ans =  Math.max(lH , rH) + 1;
-        if( root === node){
-            return ans
-        };
     },
     prettyPrint (node = this.root, prefix = "", isLeft = true){
         if (node === null) {
@@ -146,4 +147,5 @@ function Tree (arr){
     },
     }
 }
-  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).height(64))
+  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).height(52))
+  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).prettyPrint())
