@@ -133,6 +133,20 @@ function Tree (arr){
           return rHeight + 1;
         }
     },
+    depth(node,root = this.root, depth = 0){
+        if(root === null || node === null){
+            return 
+        };
+        if (node === root){
+            return depth
+        }
+        if (node.value > root.value) {
+            return this.depth(node,root.right,depth += 1)
+        }
+        else{
+            return this.depth(node,root.left,depth += 1)
+        }
+    },
     prettyPrint (node = this.root, prefix = "", isLeft = true){
         if (node === null) {
           return;
@@ -145,7 +159,8 @@ function Tree (arr){
           this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
         }
     },
+
     }
 }
-  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).height(52))
+  console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).depth(1223))
   console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).prettyPrint())
