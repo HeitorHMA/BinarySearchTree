@@ -147,6 +147,18 @@ function Tree (arr){
             return this.depth(node,root.left,depth += 1)
         }
     },
+    isBalanced(root = this.root){
+        if(root = null){
+            return true
+        }
+        let lh = this.height(root.left);
+        let rh = this.height(root.right);
+        if(Math.abs(lh - rh) <= 1 && this.isBalanced(root.left) == ture && this.isBalanced(root.right) ==  true ) {
+            return true
+        }
+        return false
+
+    },
     prettyPrint (node = this.root, prefix = "", isLeft = true){
         if (node === null) {
           return;
