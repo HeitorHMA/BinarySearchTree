@@ -174,5 +174,6 @@ function Tree (arr){
 
     }
 }
+console
   console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).depth(1223))
   console.log(Tree([3,4,5,5,5,5,5,1,2,64,12,56,1223,20]).prettyPrint())
